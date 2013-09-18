@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[My Octopress Blog]]></title>
-  <link href="http://akloboucnik.github.io/atom.xml" rel="self"/>
-  <link href="http://akloboucnik.github.io/"/>
-  <updated>2013-09-18T17:02:24+02:00</updated>
-  <id>http://akloboucnik.github.io/</id>
+  <link href="http://kloboucnik.me/atom.xml" rel="self"/>
+  <link href="http://kloboucnik.me/"/>
+  <updated>2013-09-18T17:04:14+02:00</updated>
+  <id>http://kloboucnik.me/</id>
   <author>
     <name><![CDATA[Adam Kloboucnik]]></name>
     

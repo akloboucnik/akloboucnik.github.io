@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: /
 
-Sitemap: http://akloboucnik.github.io/sitemap.xml
+Sitemap: http://kloboucnik.me/sitemap.xml
