@@ -16,9 +16,9 @@
           , minId: null
           , next_url: null
         };
-
+        
     options && $.extend(settings, options);
-
+    
     function createPhotoElement(photo) {
       return $('<div>')
         .addClass('instagram-placeholder')
@@ -34,19 +34,19 @@
             )
         );
     }
-
+    
     function createEmptyElement() {
       return $('<div>')
         .addClass('instagram-placeholder')
         .attr('id', 'empty')
         .append($('<p>').html('No photos for this query'));
     }
-
+    
     function composeRequestURL() {
 
       var url = apiEndpoint,
           params = {};
-
+      
       if (settings.next_url != null) {
         return settings.next_url;
       }
@@ -63,8 +63,7 @@
         settings.search.distance != null && (params.distance = settings.search.distance);
       }
       else if(settings.userId != null) {
-        //url += "/users/" + settings.userId + "/media/recent";
-        url += "/users/self/feed";
+        url += "/users/" + settings.userId + "/media/recent";
       }
       else if(settings.locationId != null) {
         url += "/locations/" + settings.locationId + "/media/recent";
@@ -72,7 +71,7 @@
       else {
         url += "/media/popular";
       }
-
+      
       settings.accessToken != null && (params.access_token = settings.accessToken);
       settings.clientId != null && (params.client_id = settings.clientId);
       settings.minId != null && (params.min_id = settings.minId);
@@ -80,12 +79,12 @@
       settings.show != null && (params.count = settings.show);
 
       url += "?" + $.param(params)
-
+      
       return url;
     }
-
+    
     settings.onLoad != null && typeof settings.onLoad == 'function' && settings.onLoad();
-
+    
     $.ajax({
       type: "GET",
       dataType: "jsonp",
@@ -94,7 +93,7 @@
       success: function(res) {
         var length = typeof res.data != 'undefined' ? res.data.length : 0;
         var limit = settings.show != null && settings.show < length ? settings.show : length;
-
+        
         if(limit > 0) {
           for(var i = 0; i < limit; i++) {
             that.append(createPhotoElement(res.data[i]));
@@ -107,7 +106,7 @@
         settings.onComplete != null && typeof settings.onComplete == 'function' && settings.onComplete(res.data, res);
       }
     });
-
+    
     return this;
   };
 })(jQuery);
